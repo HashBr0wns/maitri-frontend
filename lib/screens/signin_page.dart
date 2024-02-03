@@ -25,7 +25,7 @@ class _SigninPageState extends State<SigninPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Container(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,9 +43,9 @@ class _SigninPageState extends State<SigninPage> {
             TextFieldInput(
                 textEditingController: _emailController,
                 iconName: const Icon(
-                    Icons.email,
-                    color: primaryColor,
-                  ),
+                  Icons.email,
+                  color: primaryColor,
+                ),
                 hintText: 'Email ID',
                 textInputType: TextInputType.emailAddress),
             const SizedBox(
@@ -54,9 +54,9 @@ class _SigninPageState extends State<SigninPage> {
             TextFieldInput(
                 textEditingController: _passwordController,
                 iconName: const Icon(
-                    Icons.lock,
-                    color: primaryColor,
-                  ),
+                  Icons.lock,
+                  color: primaryColor,
+                ),
                 hintText: 'Password',
                 textInputType: TextInputType.emailAddress),
             const SizedBox(
@@ -69,7 +69,13 @@ class _SigninPageState extends State<SigninPage> {
                   backgroundColor: primaryColor,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(25)))),
-              child: const Text('Sign In'),
+              child: const Text(
+                'Sign In',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+              ),
             ),
             Align(
                 alignment: Alignment.topRight,
@@ -77,24 +83,24 @@ class _SigninPageState extends State<SigninPage> {
                     onPressed: () {},
                     child: const Text(
                       'Forgot password ?',
-                      style: TextStyle(color: darkerShade),
+                      style: TextStyle(color: darkerShade,
+                      fontSize: 18),
                       textAlign: TextAlign.right,
                     ))),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
                   backgroundColor: primaryColor,
                   minRadius: 30,
                 ),
-                SizedBox(width: 75,),
                 CircleAvatar(
                   backgroundColor: primaryColor,
                   minRadius: 30,
                 ),
-                SizedBox(width: 75,),
                 CircleAvatar(
                   backgroundColor: primaryColor,
                   minRadius: 30,

@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {});
+    await Future.delayed(const Duration(milliseconds: 4000), () {});
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (BuildContext context) => SigninPage()));
   }
@@ -29,29 +29,36 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         margin: const EdgeInsets.all(20),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 300,
-              ),
-              const Text('Maitrī',
-                  style: TextStyle(
-                      fontFamily: 'OtomanopeeOne',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 60,
-                      shadows: [
-                        Shadow(
-                            color: secondaryColor,
-                            offset: Offset(-10, 8),
-                            blurRadius: 0.5)
-                      ],
-                      color: Colors.white)),
-              const SizedBox(
-                height: 110,
-              ),
-              Image.asset('assets/images/main.png',width: 300,)
-            ],
+          child: MergeSemantics(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 300,
+                ),
+                const Text('Maitrī',
+                    style: TextStyle(
+                        fontFamily: 'OtomanopeeOne',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 60,
+                        shadows: [
+                          Shadow(
+                              color: secondaryColor,
+                              offset: Offset(-10, 8),
+                              blurRadius: 0.5)
+                        ],
+                        color: Colors.white)),
+                const SizedBox(
+                  height: 110,
+                ),
+                Semantics(
+                    label: 'Your emergency ally in every light',
+                    child: Image.asset(
+                      'assets/images/main.png',
+                      width: 300,
+                    ))
+              ],
+            ),
           ),
         ),
       ),
