@@ -17,14 +17,18 @@ class _DashboardState extends State<Dashboard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 36, 36),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 36, 36),
               child: Align(
                 alignment: Alignment.topRight,
-                child: Icon(
-                  Icons.person,
-                  size: 35,
-                  color: secondaryColor,
+                child: OutlinedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(side: const BorderSide(color: backgroundColor)),
+                  child: const Icon(
+                    Icons.person,
+                    size: 35,
+                    color: secondaryColor,
+                  ),
                 ),
               ),
             ),
@@ -36,28 +40,79 @@ class _DashboardState extends State<Dashboard> {
                   fontSize: 50,
                   color: secondaryColor),
             ),
-            Container(
-              width: 300,
-              height: 180,
-              decoration: const BoxDecoration(color: primaryColor, borderRadius: BorderRadius.all(Radius.circular(25)),),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.camera_alt_outlined,
-                    size: 36,
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 30,),
-                  Text(
-                    "hello",
-                    style: TextStyle(
+            const SizedBox(
+              height: 40,
+            ),
+            SizedBox(
+              width: 330,
+              height: 260,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
+                    backgroundColor: secondaryColor,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25)))),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Icon(
+                      Icons.camera_alt_outlined,
+                      size: 60,
                       color: Colors.white,
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Describe  and differentiate your surroundings and objects",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                ),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              width: 330,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.fromLTRB(100, 40, 100, 40),
+                    backgroundColor: secondaryColor,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25)))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(child: Image.asset('assets/images/saferoute.png')),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Your safe route",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
