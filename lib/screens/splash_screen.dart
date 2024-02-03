@@ -50,12 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(
                 height: 110,
               ),
-              Container(
-                decoration: const BoxDecoration(
-                    color: secondaryColor,
-                    borderRadius: BorderRadius.all(Radius.circular(33))),
-                height: 200,
-              )
+              Image.asset('assets/images/main.png',width: 300,)
             ],
           ),
         ),
