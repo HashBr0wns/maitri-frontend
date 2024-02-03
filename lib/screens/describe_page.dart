@@ -85,7 +85,8 @@ class _ChatPageState extends State<ChatPage> {
   void _sendMessage(XFile image, String text) async {
     // Placeholder API details
     print('Call is successful');
-    String apiUrl = 'https://49304113-7f46-40c2-a53b-7b0d7c70f046-00-4ejk7yu0jkwn.pike.replit.dev/surrounding';
+    String apiUrl = 'https://49304113-7f46-40c2-a53b-7b0d7c70f046-00-4ejk7yu0jkwn.pike.replit.dev/surrounding?question=$text';
+    print(apiUrl);
 
     FormData formData = FormData.fromMap({
       'image': await MultipartFile.fromFile(image.path),
@@ -95,7 +96,6 @@ class _ChatPageState extends State<ChatPage> {
       Response response = await Dio().post(
         apiUrl,
         data: formData,
-        queryParameters: {'question': text},
       );
 
       // Process the API response and update the UI
