@@ -28,7 +28,6 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-
     _textController = TextEditingController();
     _initializeCamera();
     _initSpeech();
@@ -62,22 +61,40 @@ class _ChatPageState extends State<ChatPage> {
 
   /// This is the callback that the SpeechToText plugin calls when
   /// the platform returns recognized words.
+  bool _isCapturing = false;
+
   void _onSpeechResult(SpeechRecognitionResult result) async {
     setState(() {
       _lastWords = result.recognizedWords;
     });
     print(_lastWords);
-    print('hello');
-    if (_cameraController.value.isInitialized) {
+    print('helloyyyy');
+
+    // Check if the camera is initialized and not currently capturing
+    if (_cameraController.value.isInitialized && !_isCapturing) {
+      // Set the capturing flag to true
+      _isCapturing = true;
       XFile imageFile = await _cameraController.takePicture();
       _sendMessage(imageFile, _lastWords);
+      try {
+        XFile imageFile = await _cameraController.takePicture();
+        _sendMessage(imageFile, _lastWords);
+      } catch (e) {
+        print("Error taking picture: $e");
+      } finally {
+        // Set the capturing flag back to false when the capture is completed
+        _isCapturing = false;
+        _speechEnabled = false;
+        await Future.delayed(Duration(seconds: 1)); // Delay for stability
+        _initSpeech();
+      }
     }
   }
 
   void _initializeCamera() async {
     final cameras = await availableCameras();
-    _cameraController = CameraController(cameras[0], ResolutionPreset.medium);
-    _cameraController.setFlashMode(FlashMode.off);
+    _cameraController = CameraController(cameras[0], ResolutionPreset.max);
+    // _cameraController.setFlashMode(FlashMode.off);
     await _cameraController.initialize();
     setState(() {});
   }
@@ -85,7 +102,8 @@ class _ChatPageState extends State<ChatPage> {
   void _sendMessage(XFile image, String text) async {
     // Placeholder API details
     print('Call is successful');
-    String apiUrl = 'https://49304113-7f46-40c2-a53b-7b0d7c70f046-00-4ejk7yu0jkwn.pike.replit.dev/surrounding?question=$text';
+    String apiUrl =
+        'https://49304113-7f46-40c2-a53b-7b0d7c70f046-00-4ejk7yu0jkwn.pike.replit.dev/surrounding?question=$text';
     print(apiUrl);
 
     FormData formData = FormData.fromMap({
@@ -150,23 +168,31 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        // title: const Text('Chat Page'),
-      ),
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0
+          // title: const Text('Chat Page'),
+          ),
       body: Column(
         children: [
-          const Text(
-            'Describe your surroundings',
-            style: TextStyle(
-                fontFamily: 'OtomanopeeOne',
-                color: secondaryColor,
-                fontSize: 30),
-            textAlign: TextAlign.center,
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'Describe your surroundings',
+              style: TextStyle(
+                  fontFamily: 'OtomanopeeOne',
+                  color: secondaryColor,
+                  fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
           ),
-          // Expanded(
-          //   child: _cameraController.value.isInitialized
-          //       ? Draggable(child: CameraPreview(_cameraController), feedback: Container())
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height * 0.4,
+          //   width: MediaQuery.of(context).size.width * 0.8,
+          //   child: _cameraController != null &&
+          //           _cameraController.value.isInitialized
+          //       ? Draggable(
+          //           feedback: Container(),
+          //           child: CameraPreview(_cameraController),
+          //         )
           //       : Container(),
           // ),
           Expanded(

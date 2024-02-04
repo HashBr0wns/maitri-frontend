@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maitri/screens/dashboard.dart';
 import 'package:maitri/utils/colors.dart';
 import 'package:maitri/widgets/text_field.dart';
 
@@ -63,7 +64,12 @@ class _SigninPageState extends State<SigninPage> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => const Dashboard()));
+              },
               style: ElevatedButton.styleFrom(
                   fixedSize: const Size(350, 60),
                   backgroundColor: primaryColor,
@@ -71,10 +77,10 @@ class _SigninPageState extends State<SigninPage> {
                       borderRadius: BorderRadius.all(Radius.circular(25)))),
               child: const Text(
                 'Sign In',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ),
             Align(
@@ -83,8 +89,7 @@ class _SigninPageState extends State<SigninPage> {
                     onPressed: () {},
                     child: const Text(
                       'Forgot password ?',
-                      style: TextStyle(color: darkerShade,
-                      fontSize: 18),
+                      style: TextStyle(color: darkerShade, fontSize: 18),
                       textAlign: TextAlign.right,
                     ))),
             const SizedBox(

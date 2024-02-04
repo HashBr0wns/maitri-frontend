@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maitri/screens/describe_page.dart';
 import 'package:maitri/utils/colors.dart';
 
 class Dashboard extends StatefulWidget {
@@ -23,7 +24,8 @@ class _DashboardState extends State<Dashboard> {
                 alignment: Alignment.topRight,
                 child: OutlinedButton(
                   onPressed: () {},
-                  style: OutlinedButton.styleFrom(side: const BorderSide(color: backgroundColor)),
+                  style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: backgroundColor)),
                   child: const Icon(
                     Icons.person,
                     size: 35,
@@ -47,7 +49,12 @@ class _DashboardState extends State<Dashboard> {
               width: 330,
               height: 260,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => ChatPage()));
+                },
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
                     backgroundColor: secondaryColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maitri/screens/dashboard.dart';
 import 'package:maitri/utils/colors.dart';
 import 'package:maitri/widgets/text_field.dart';
 
@@ -76,7 +77,12 @@ class _SignupPageState extends State<SignupPage> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Dashboard()));
+              },
               style: ElevatedButton.styleFrom(
                   fixedSize: const Size(350, 55),
                   backgroundColor: primaryColor,
