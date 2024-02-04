@@ -39,6 +39,7 @@ dependencies:
   dio: ^5.4.0
   speech_to_text: ^6.6.0
   flutter_tts: ^3.8.5
+  flutter_vision: ^1.1.4
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,8 @@ flutter:
   assets:
     - assets/images/main.png
     - assets/images/saferoute.png
+    - assets/labels.txt
+    - assets/model.tflite
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

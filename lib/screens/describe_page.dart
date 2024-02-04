@@ -102,8 +102,7 @@ class _ChatPageState extends State<ChatPage> {
   void _sendMessage(XFile image, String text) async {
     // Placeholder API details
     print('Call is successful');
-    String apiUrl =
-        'https://49304113-7f46-40c2-a53b-7b0d7c70f046-00-4ejk7yu0jkwn.pike.replit.dev/surrounding?question=$text';
+    String apiUrl = 'https://ea2a0f9b-2256-4e50-ba34-08fe54b6d6df-00-391y2lq3o3aga.sisko.replit.dev/surrounding?question=$text';
     print(apiUrl);
 
     FormData formData = FormData.fromMap({
@@ -257,6 +256,7 @@ class _ChatPageState extends State<ChatPage> {
                       color: backgroundColor,
                     ),
                     onPressed: _captureAndSendMessage,
+                    // onPressed: () => print('this is a press'),
                   ),
                 ),
               ],
