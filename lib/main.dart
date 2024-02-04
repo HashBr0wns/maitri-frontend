@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maitri/screens/choose_lang.dart';
 import 'package:maitri/screens/dashboard.dart';
 import 'package:maitri/screens/splash_screen.dart';
 import 'package:flutter/services.dart';
@@ -16,10 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    Locale? systemLocale = WidgetsBinding.instance?.platformDispatcher?.locale;
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: ChatPage(),
+      locale: systemLocale,
+      supportedLocales: const [
+        Locale('en'),
+        Locale('hi')
+      ],
+      // home: const ChatPage(),
+      home: const ChooseLang(),
       // home: Dashboard(),
     );
   }
