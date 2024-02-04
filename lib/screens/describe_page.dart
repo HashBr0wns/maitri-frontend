@@ -8,8 +8,11 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 class ChatPage extends StatefulWidget {
   final Key? key;
+  final String? lang;
 
-  const ChatPage({this.key}) : super(key: key);
+  const ChatPage({
+    this.key,this.lang
+  }) : super(key: key);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -45,7 +48,7 @@ class _ChatPageState extends State<ChatPage> {
   /// Each time to start a speech recognition session
   void _startListening() async {
     print('listening');
-    await _speechToText.listen(onResult: _onSpeechResult);
+    await _speechToText.listen(onResult: _onSpeechResult, localeId: widget.lang == "en" ? "en" : "hi");
     setState(() {});
   }
 
@@ -99,7 +102,8 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _sendMessage(XFile image, String text) async {
-    // Placeholder API details
+    // Placeholder API details 
+
     print('Call is successful');
     String apiUrl =
         'https://ea2a0f9b-2256-4e50-ba34-08fe54b6d6df-00-391y2lq3o3aga.sisko.replit.dev/surrounding?question=$text';
