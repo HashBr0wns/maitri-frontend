@@ -74,10 +74,9 @@ class _ChatPageState extends State<ChatPage> {
     if (_cameraController.value.isInitialized && !_isCapturing) {
       // Set the capturing flag to true
       _isCapturing = true;
-      XFile imageFile = await _cameraController.takePicture();
-      _sendMessage(imageFile, _lastWords);
       try {
         XFile imageFile = await _cameraController.takePicture();
+        _addMessage(ChatMessage(text: _lastWords, sender: "user"));
         _sendMessage(imageFile, _lastWords);
       } catch (e) {
         print("Error taking picture: $e");
@@ -102,7 +101,8 @@ class _ChatPageState extends State<ChatPage> {
   void _sendMessage(XFile image, String text) async {
     // Placeholder API details
     print('Call is successful');
-    String apiUrl = 'https://ea2a0f9b-2256-4e50-ba34-08fe54b6d6df-00-391y2lq3o3aga.sisko.replit.dev/surrounding?question=$text';
+    String apiUrl =
+        'https://ea2a0f9b-2256-4e50-ba34-08fe54b6d6df-00-391y2lq3o3aga.sisko.replit.dev/surrounding?question=$text';
     print(apiUrl);
 
     FormData formData = FormData.fromMap({
