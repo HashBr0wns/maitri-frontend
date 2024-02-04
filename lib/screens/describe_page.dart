@@ -67,11 +67,11 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {
       _lastWords = result.recognizedWords;
     });
-    print(_lastWords);
-    print('helloyyyy');
 
     // Check if the camera is initialized and not currently capturing
-    if (_cameraController.value.isInitialized && !_isCapturing) {
+    if (_cameraController.value.isInitialized &&
+        !_isCapturing &&
+        result.finalResult) {
       // Set the capturing flag to true
       _isCapturing = true;
       try {
